@@ -4,4 +4,5 @@
 
 DBName: "container"
 Username: "admin"
+Size: "100m"
 Instances: 2

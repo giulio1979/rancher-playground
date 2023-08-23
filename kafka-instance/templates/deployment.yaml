@@ -12,9 +12,7 @@ spec:
       reconciliationIntervalSeconds: 120
   kafka:
     config:
-      {{ - range $pkey, $pval := .Values.kafka.config }}
-      {{ $pkey }}: {{ $pval }}
-      {{ - end }}
+      {{ .Values.kafka.config }}     
     listeners:
       plain: {}
       tls: {}

@@ -6,21 +6,19 @@ metadata:
     {{- include "postgres-instance.labels" . | nindent 4 }}
 spec:
   teamId: "{{ .Release.Name }}"
-  # Internal database
   enableMasterLoadBalancer: false
   volume:
     size: {{ .Values.Size }}
   numberOfInstances: {{ .Values.Instances }}
   users:
-    # database owner
-    {{ "{{" }} .Values.Username {{ "}}" }}:
+    {{ .Values.Username }}:
       - superuser
       - createdb
 
   databases:
-    {{ "{{" }} .Values.DBName {{ "}}" }}: {{ "{{" }} .Values.Username {{ "}}" }}
+    {{ .Values.DBName }}: {{ .Values.Username }}
   postgresql:
-    version: "{{ "{{" }} .Values.DBVersion {{ "}}" }}"
+    version: "{{ .Values.DBVersion }}"
   patroni:
     initdb:
       encoding: "UTF8"
@@ -28,5 +26,4 @@ spec:
       data-checksums: "true"
     pg_hba:
       - hostssl all all 0.0.0.0/0 md5
-      # Allow non-SSL connections for compatibility (e.g. Artifactory)
       - host    all all 0.0.0.0/0 md5

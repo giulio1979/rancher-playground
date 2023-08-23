@@ -5,7 +5,7 @@
 kafka:
   enable: true
   name: kafka
-  numberOfInstances: 2
+  numberOfInstances: 3
   diskSize: 50M
   zookeeperDiskSize: 50M
   config:

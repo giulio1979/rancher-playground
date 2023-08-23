@@ -34,8 +34,10 @@ spec:
         port: 9093
         type: internal
         tls: true
-    config:
-      {{ .Values.kafka.config }}
+    config: 
+    {{- range $key, $value := .Values.kafka.config }}
+      {{ $key }}: {{ $value | quote }}
+    {{- end }}
     storage:
       type: jbod
       volumes:

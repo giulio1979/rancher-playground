@@ -1,0 +1,48 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: Kafka
+metadata:
+  name: {{ include "kafka-instance.fullname" . }}
+  labels:
+    {{- include "kafka-instance.labels" . | nindent 4 }}
+spec:
+  entityOperator:
+    topicOperator:
+      reconciliationIntervalSeconds: 90
+    userOperator:
+      reconciliationIntervalSeconds: 120
+  kafka:
+    config:
+      {{ - range $pkey, $pval := .Values.kafka.config }}
+      {{ $pkey }}: {{ $pval }}
+      {{ - end }}
+    listeners:
+      plain: {}
+      tls: {}
+    replicas: {{ .Values.kafka.numberOfInstances }}
+    storage:
+      type: jbod
+      volumes:
+        - deleteClaim: false
+          id: 0
+          size: 100M
+          type: persistent-claim
+    version: 2.5.0
+    resources:
+      limits:
+        cpu: "2"
+        memory: "16Gi"
+      requests:
+        cpu: "500m"
+        memory: "2Gi"
+  zookeeper:
+    replicas: {{ .Values.kafka.numberOfInstances }}
+    jvmOptions:
+      javaSystemProperties:
+        - name: zookeeper.ssl.hostnameVerification
+          value: "false"
+        - name: zookeeper.ssl.quorum.hostnameVerification
+          value: "false"
+    storage:
+      deleteClaim: false
+      size: 20M
+      type: persistent-claim

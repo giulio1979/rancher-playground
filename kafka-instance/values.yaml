@@ -1,0 +1,13 @@
+# Default values for kafka-instance.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+kafka:
+  enable: true
+  name: kafka
+  numberOfInstances: 2
+  config:
+    log.message.format.version: "2.5"
+    offsets.topic.replication.factor: "3"
+    transaction.state.log.min.isr: "2"
+    transaction.state.log.replication.factor: "3"

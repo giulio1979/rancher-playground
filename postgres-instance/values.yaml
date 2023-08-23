@@ -6,3 +6,4 @@ DBName: "container"
 Username: "admin"
 Size: "100m"
 Instances: 2
+DBVersion: 10

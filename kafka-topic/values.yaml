@@ -1,0 +1,4 @@
+TopicName: "myTopic"
+KafkaCluster: "myCluster"
+RetentionMs: 100000000
+SegmentBytes: 100000

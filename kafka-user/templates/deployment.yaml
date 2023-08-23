@@ -1,0 +1,16 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaUser
+metadata:
+  name: {{ .Values.KafkaUser }}
+  labels:
+    strimzi.io/cluster: {{ .Values.KafkaCluster }}
+spec:
+  authentication:
+    type: scram-sha-512
+  authorization:
+    type: simple
+    acls:
+      {{ - range $pkey, $pval := .Values.access }}
+      {{ $pkey }}: {{ $pval }}
+      {{ - end }} 
+      # Example consumer Acls for topic my-topic using consumer group my-group

@@ -6,8 +6,12 @@ kafka:
   enable: true
   name: kafka
   numberOfInstances: 2
+  diskSize: 50M
+  zookeeperDiskSize: 50M
   config:
-    log.message.format.version: "2.5"
-    offsets.topic.replication.factor: "3"
-    transaction.state.log.min.isr: "2"
-    transaction.state.log.replication.factor: "3"
+    offsets.topic.replication.factor: 3
+    transaction.state.log.replication.factor: 3
+    transaction.state.log.min.isr: 2
+    default.replication.factor: 3
+    min.insync.replicas: 2
+    inter.broker.protocol.version: "3.5"

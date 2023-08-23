@@ -5,42 +5,50 @@ metadata:
   labels:
     {{- include "kafka-instance.labels" . | nindent 4 }}
 spec:
-  entityOperator:
-    topicOperator:
-      reconciliationIntervalSeconds: 90
-    userOperator:
-      reconciliationIntervalSeconds: 120
+  resources:
+    limits:
+      cpu: 1
+      memory: 1Gi
+  logging:
+    type: inline
+    loggers:
+      connect.root.logger.level: INFO
+  readinessProbe:
+    initialDelaySeconds: 15
+    timeoutSeconds: 5
+  livenessProbe:
+    initialDelaySeconds: 15
+    timeoutSeconds: 5
+  jvmOptions:
+    "-Xmx": "256m"
+    "-Xms": "256m"
   kafka:
-    config:
-      {{ .Values.kafka.config }}     
-    listeners:
-      plain: {}
-      tls: {}
+    version: 3.5.1
     replicas: {{ .Values.kafka.numberOfInstances }}
+    listeners:
+      - name: plain
+        port: 9092
+        type: internal
+        tls: false
+      - name: tls
+        port: 9093
+        type: internal
+        tls: true
+    config:
+      {{ .Values.kafka.config }}
     storage:
       type: jbod
       volumes:
-        - deleteClaim: false
-          id: 0
-          size: 100M
-          type: persistent-claim
-    version: 2.5.0
-    resources:
-      limits:
-        cpu: "2"
-        memory: "16Gi"
-      requests:
-        cpu: "500m"
-        memory: "2Gi"
+      - id: 0
+        type: persistent-claim
+        size: {{ .Values.kafka.diskSize }}
+        deleteClaim: false
   zookeeper:
     replicas: {{ .Values.kafka.numberOfInstances }}
-    jvmOptions:
-      javaSystemProperties:
-        - name: zookeeper.ssl.hostnameVerification
-          value: "false"
-        - name: zookeeper.ssl.quorum.hostnameVerification
-          value: "false"
     storage:
-      deleteClaim: false
-      size: 20M
       type: persistent-claim
+      size: {{ .Values.kafka.zookeeperDiskSize }}
+      deleteClaim: false
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}

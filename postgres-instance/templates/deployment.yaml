@@ -9,7 +9,7 @@ spec:
   # Internal database
   enableMasterLoadBalancer: false
   volume:
-    size: {{ "{{" }} .Values.Size {{ "}}" }}    
+    size: {{ .Values.Size }}
   numberOfInstances: {{ .Values.Instances }}
   users:
     # database owner

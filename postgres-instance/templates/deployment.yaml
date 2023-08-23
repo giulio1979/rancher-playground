@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "postgres-instance.fullname" . }}
   labels:
-    {{- include "postgres-instance.labels" . | nindent 4 }}
+    enable_postgres_monitoring: "1"
 spec:
   teamId: "{{ .Release.Name }}"
   enableMasterLoadBalancer: false

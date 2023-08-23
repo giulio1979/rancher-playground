@@ -1,9 +1,10 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
 metadata:
   name: {{ include "postgres-instance.fullname" . }}
   labels:
     enable_postgres_monitoring: "1"
+    {{- include "postgres-instance.labels" . | nindent 4 }}    
 spec:
   teamId: "{{ .Release.Name }}"
   enableMasterLoadBalancer: false

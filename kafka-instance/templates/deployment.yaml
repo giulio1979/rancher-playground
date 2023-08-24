@@ -5,26 +5,21 @@ metadata:
   labels:
     {{- include "kafka-instance.labels" . | nindent 4 }}
 spec:
-  resources:
-    limits:
-      cpu: 1
-      memory: 1Gi
-  logging:
-    type: inline
-    loggers:
-      connect.root.logger.level: INFO
-  readinessProbe:
-    initialDelaySeconds: 15
-    timeoutSeconds: 5
-  livenessProbe:
-    initialDelaySeconds: 15
-    timeoutSeconds: 5
-  jvmOptions:
-    "-Xmx": "256m"
-    "-Xms": "256m"
   kafka:
+    authorization:
+      type: simple
     version: 3.5.1
     replicas: {{ .Values.kafka.numberOfInstances }}
+    resources:
+      requests:
+        memory: 100M
+        cpu: 500m
+      limits:
+        memory: 1Gi
+        cpu: "1"
+    jvmOptions:
+      -Xms: 256m
+      -Xmx: 256m
     listeners:
       - name: plain
         port: 9092
@@ -55,10 +50,43 @@ spec:
       type: persistent-claim
       size: {{ .Values.kafka.zookeeperDiskSize }}
       deleteClaim: false
+    resources:
+      requests:
+        memory: 256M
+        cpu: "0.3"
+      limits:
+        memory: 1Gi
+        cpu: "0.5"
+    jvmOptions:
+      -Xms: 256m
+      -Xmx: 256m
   entityOperator:
-    topicOperator: {}
-    userOperator: 
+    topicOperator:
+      resources:
+        requests:
+          memory: 256Mi
+          cpu: "0.2"
+        limits:
+          memory: 256Mi
+          cpu: "0.5"
+    userOperator:
+      resources:
+        requests:
+          memory: 512Mi
+          cpu: "0.2"
+        limits:
+          memory: 512Mi
+          cpu: "0.5"
       logging:
         type: inline
         loggers:
           rootLogger.level: DEBUG
+  kafkaExporter:
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: "0.1"
+      limits:
+        memory: 256Mi
+        cpu: "0.5"      
+

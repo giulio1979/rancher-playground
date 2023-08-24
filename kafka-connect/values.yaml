@@ -1,7 +1,7 @@
-BootstrapServers: kafka-kafka-instance-kafka-brokers:9092
-ClientCertificateSecretName: kafka-kafka-instance-clients-ca-cert
-KafkaUsername: ""
-PasswordSecretName: ""
+BootstrapServers: "kafka-kafka-instance-kafka-brokers:9092"
+ClientCertificateSecretName: "kafka-kafka-instance-cluster-ca-cert"
+KafkaUsername: "testuser"
+PasswordSecretName: "testuser"
 
 plugins:
 - name: debezium-connector-postgres

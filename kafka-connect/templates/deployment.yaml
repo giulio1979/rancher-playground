@@ -52,9 +52,13 @@ spec:
       type: docker
       image: ttl.sh/strimzi-connect-example-{{ include "kafka-connect.fullname" . }}:24h
     plugins:
-      {{ - range $pkey, $pval := .Values.plugins }}
-      {{ $pkey }}: {{ $pval }}
-      {{ - end }} 
+      {{- range $pkey, $pval := .Values.plugins }}
+      - name: {{ index $pval "name" | quote }}
+        artifacts:
+        - type: {{ index $pval "type" | quote }}
+          url: {{ index $pval "url" | quote }}
+          sha512sum: {{ index $pval "sha512sum" | quote }}
+      {{- end }}
   template:
     pod:
       securityContext:

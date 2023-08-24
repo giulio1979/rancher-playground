@@ -1,13 +1,5 @@
 KafkaUser: "testuser"
 KafkaCluster: "kafka"
 access:
-- resource:
-    type: topic
-    name: plant
-    patternType: prefix
-  # Example Producer Acls for topic my-topic
-  operations:
-  - Create
-  - Describe
-  - Write
-  host: "*"
+- topicNamePrefix: plant
+

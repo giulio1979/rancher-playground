@@ -10,7 +10,15 @@ spec:
   authorization:
     type: simple
     acls:
-      {{- range $key, $value := .Values.access }}
-        {{ $key }}: {{ $value | quote }}
-      {{- end }}
+    {{- range $pkey, $pval := .Values.access }}
+    - resource:
+        type: topic
+        name: {{ index $pval "topicNamePrefix" | quote }}
+        patternType: prefix
+      operations:
+      - Create
+      - Describe
+      - Write
+      host: "*"
+    {{- end }} 
 

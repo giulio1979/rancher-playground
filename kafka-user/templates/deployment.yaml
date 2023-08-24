@@ -11,39 +11,51 @@ spec:
     type: simple
     acls:
     {{- range $pkey, $pval := .Values.access }}
-      - resource:
-          type: topic
-          name: {{ index $pval "topicNamePrefix" | quote }}
-          patternType: literal
-        operation: All
-      - resource:
-          type: group
-          name: connect-cluster
-          patternType: literal
-        operation: All
-      - resource:
-          type: topic
-          name: connect-cluster-configs
-        operations:
-          - Create
-          - Describe
-          - Read
-          - Write
-      - resource:
-          type: topic
-          name: connect-cluster-status
-        operations:
-          - Create
-          - Describe
-          - Read
-          - Write
-      - resource:
-          type: topic
-          name: connect-cluster-offsets
-        operations:
-          - Create
-          - Describe
-          - Read
-          - Write        
+    # Kafka Connects internal topics used to store configuration, offsets or status
+    - resource:
+        type: group
+        name: connect-cluster
+      operations:
+        - Read
+    - resource:
+        type: topic
+        name: connect-cluster-configs
+      operations:
+        - Create
+        - Describe
+        - Read
+        - Write
+    - resource:
+        type: topic
+        name: connect-cluster-status
+      operations:
+        - Create
+        - Describe
+        - Read
+        - Write
+    - resource:
+        type: topic
+        name: connect-cluster-offsets
+      operations:
+        - Create
+        - Describe
+        - Read
+        - Write
+    # Additional topics and groups used by connectors
+    # Change to match the topics used by your connectors
+    - resource:
+        type: group
+        name: connect-cluster
+      operations:
+       - Read
+    - resource:
+        type: topic
+        name: {{ index $pval "topicName" | quote }}
+        patternType: prefix
+      operations:
+        - Create
+        - Describe
+        - Read
+        - Write  
     {{- end }} 
 

@@ -4,7 +4,19 @@ KafkaUsername: ""
 PasswordSecretName: ""
 
 plugins:
-- name: debezium-postgres-connector
+- name: debezium-connector-postgres
   type: zip
   url: https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.4.2.Final/debezium-connector-postgres-1.4.2.Final-plugin.zip
+  sha512sum: "-"
+- name: camel-http-sink-kafka-connector
+  type: tgz
+  url: https://repo1.maven.org/maven2/org/apache/camel/kafkaconnector/camel-http-sink-kafka-connector/3.20.6/camel-http-sink-kafka-connector-3.20.6-package.tar.gz
+  sha512sum: "-"
+- name: camel-jdbc-kafka-connector
+  type: tgz
+  url: https://repo1.maven.org/maven2/org/apache/camel/kafkaconnector/camel-jdbc-kafka-connector/3.20.6/camel-jdbc-kafka-connector-3.20.6-package.tar.gz
+  sha512sum: "-"
+- name: camel-sqlserver-source-kafka-connector
+  type: tgz
+  url: https://repo1.maven.org/maven2/org/apache/camel/kafkaconnector/camel-sqlserver-source-kafka-connector/3.20.6/camel-sqlserver-source-kafka-connector-3.20.6-package.tar.gz
   sha512sum: "-"

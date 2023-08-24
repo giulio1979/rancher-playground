@@ -1,4 +1,4 @@
 TopicName: "myTopic"
-KafkaCluster: "myCluster"
+KafkaCluster: "kafka-kafka-instance"
 RetentionMs: 100000000
 SegmentBytes: 100000

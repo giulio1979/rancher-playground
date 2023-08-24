@@ -1,0 +1,12 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaBridge
+metadata:
+  name: {{ include "kafka-bridge.fullname" . }}
+  labels:
+    {{- include "kafka-bridge.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.Replicas }}
+  bootstrapServers: {{ .Values.KafkaServers }}
+  http:
+    port: {{ .Values.Port }}
+

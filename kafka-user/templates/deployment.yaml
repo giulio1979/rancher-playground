@@ -10,7 +10,7 @@ spec:
   authorization:
     type: simple
     acls:
-      {{ - range $pkey, $pval := .Values.access }}
-      {{ $pkey }}: {{ $pval }}
-      {{ - end }} 
-      # Example consumer Acls for topic my-topic using consumer group my-group
+      {{- range $key, $value := .Values.access }}
+        {{ $key }}: {{ $value | quote }}
+      {{- end }}
+

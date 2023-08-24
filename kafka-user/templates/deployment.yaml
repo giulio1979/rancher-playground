@@ -11,14 +11,15 @@ spec:
     type: simple
     acls:
     {{- range $pkey, $pval := .Values.access }}
-    - resource:
-        type: topic
-        name: {{ index $pval "topicNamePrefix" | quote }}
-        patternType: prefix
-      operations:
-      - Create
-      - Describe
-      - Write
-      host: "*"
+      - resource:
+          type: topic
+          name: {{ index $pval "topicNamePrefix" | quote }}
+          patternType: literal
+        operation: All
+      - resource:
+          type: group
+          name: connect-cluster
+          patternType: literal
+        operation: All
     {{- end }} 
 

@@ -81,7 +81,7 @@ spec:
       logging:
         type: inline
         loggers:
-          rootLogger.level: DEBUG
+          rootLogger.level: TRACE
   kafkaExporter:
     resources:
       requests:

@@ -31,8 +31,12 @@ spec:
         port: 9093
         type: internal
         tls: true
+      - name: tls
+        port: 9094
+        type: external
+        tls: true
         authentication:
-          type: scram-sha-512        
+          type: scram-sha-512                 
     config: 
     {{- range $key, $value := .Values.kafka.config }}
       {{ $key }}: {{ $value | quote }}
@@ -83,11 +87,11 @@ spec:
       logging:
         type: inline
         loggers:
-          rootLogger.level: TRACE
+          rootLogger.level: DEBUG
   kafkaExporter:
     resources:
       requests:
-        memory: 256Mi
+        memory: 100Mi
         cpu: 100m
       limits:
         memory: 256Mi

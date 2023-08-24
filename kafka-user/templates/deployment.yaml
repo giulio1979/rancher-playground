@@ -21,5 +21,29 @@ spec:
           name: connect-cluster
           patternType: literal
         operation: All
+      - resource:
+          type: topic
+          name: connect-cluster-configs
+        operations:
+          - Create
+          - Describe
+          - Read
+          - Write
+      - resource:
+          type: topic
+          name: connect-cluster-status
+        operations:
+          - Create
+          - Describe
+          - Read
+          - Write
+      - resource:
+          type: topic
+          name: connect-cluster-offsets
+        operations:
+          - Create
+          - Describe
+          - Read
+          - Write        
     {{- end }} 
 

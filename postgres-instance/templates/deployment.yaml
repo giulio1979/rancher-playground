@@ -25,9 +25,11 @@ spec:
       locale: "en_US.UTF-8"
       data-checksums: "true"
     pg_hba:
-      - local   all all                   peer
-      - hostssl all all      0.0.0.0/0    md5
-      - host    all all      0.0.0.0/0    md5
-      - host    all all      ::1/128      md5
-      - host    all postgres 127.0.0.1/32 md5
-      - host    all all      0.0.0.0/0    scram-sha-256
+      - hostssl all all 0.0.0.0/0 md5
+      - host all all 0.0.0.0/0 md5
+      - host replication standby 0.0.0.0/0 md5
+      - hostssl replication standby 0.0.0.0/0 md5
+      - local all postgres trust
+      - hostssl all +zalandos 127.0.0.1/32 pam
+      - hostssl all +zalandos ::1/128 pam
+      - hostssl all +zalandos all pam

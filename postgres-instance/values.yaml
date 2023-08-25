@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 DBName: "container"
-Username: "admin"
+Username: "hmuser"
 Size: "100M"
 Instances: 2
 DBVersion: 10

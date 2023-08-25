@@ -19,6 +19,8 @@ spec:
     {{ .Values.DBName }}: {{ .Values.Username }}
   postgresql:
     version: "{{ .Values.DBVersion }}"
+    parameters:
+      wal_level: logical
   patroni:
     initdb:
       encoding: "UTF8"
@@ -34,8 +36,6 @@ spec:
       - host      all all 0.0.0.0/0 md5
       - host      replication standby 0.0.0.0/0 md5
       - hostssl   replication standby 0.0.0.0/0 md5
-  postgresql:
-    version: '10'
   teamId: hmuser
   users:
     hmuser:

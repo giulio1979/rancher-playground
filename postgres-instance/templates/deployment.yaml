@@ -25,6 +25,7 @@ spec:
       locale: "en_US.UTF-8"
       data-checksums: "true"
     pg_hba:
+      - local   all all                   peer
       - hostssl all all      0.0.0.0/0    md5
       - host    all all      0.0.0.0/0    md5
       - host    all all      ::1/128      md5

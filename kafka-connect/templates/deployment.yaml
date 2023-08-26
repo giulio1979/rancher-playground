@@ -40,6 +40,12 @@ spec:
     limits:
       memory: 1Gi
       cpu: 1000m
+  metricsConfig:
+    type: jmxPrometheusExporter
+    valueFrom:
+      configMapKeyRef:
+        name: connect-metrics
+        key: metrics-config.yml      
   jvmOptions:
     -Xms: 256m
     -Xmx: 256m

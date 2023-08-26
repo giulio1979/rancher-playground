@@ -1,0 +1,22 @@
+# Default values for kafka-connector.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+TaskCount: 1
+
+KafkaConnect: "test-connect-kafka-connect"
+
+connector:
+  name: "io.debezium.connector.postgresql.PostgresConnector"
+  config:
+    database.dbname: container
+    database.history.kafka.bootstrap.servers: kafka-kafka-instance-kafka-brokers:9092
+    database.history.kafka.topic: schema-changes.inventory
+    database.hostname: test1-postgres-instance
+    database.password: 1MZgtVIMyM9ZyzyyXTk0NrTMQDV3NiI4yPhPaU2Xk9ZGhnZkf8nRnGVa4SRQNe81
+    database.port: '5432'
+    database.server.id: '184054'
+    database.server.name: test1-postgres-instance
+    database.user: postgres
+    database.whitelist: inventory
+    include.schema.changes: 'true'

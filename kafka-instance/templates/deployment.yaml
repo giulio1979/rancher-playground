@@ -48,6 +48,12 @@ spec:
         type: persistent-claim
         size: {{ .Values.kafka.diskSize }}
         deleteClaim: false
+    metricsConfig:
+      type: jmxPrometheusExporter
+      valueFrom:
+        configMapKeyRef:
+          name: kafka-metrics
+          key: kafka-metrics-config.yml        
   zookeeper:
     replicas: {{ .Values.kafka.numberOfInstances }}
     storage:
@@ -64,6 +70,12 @@ spec:
     jvmOptions:
       -Xms: 256m
       -Xmx: 256m
+    metricsConfig:
+      type: jmxPrometheusExporter
+      valueFrom:
+        configMapKeyRef:
+          name: kafka-metrics
+          key: zookeeper-metrics-config.yml      
   entityOperator:
     topicOperator:
       resources:
@@ -89,6 +101,8 @@ spec:
         loggers:
           rootLogger.level: DEBUG
   kafkaExporter:
+    topicRegex: ".*"
+    groupRegex: ".*"
     resources:
       requests:
         memory: 100Mi

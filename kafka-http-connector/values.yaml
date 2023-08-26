@@ -1,0 +1,16 @@
+# Default values for kafka-connector.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+TaskCount: 1
+
+KafkaConnect: "test-connect-kafka-connect"
+
+connector:
+  name: "org.apache.camel.kafkaconnector.httpsink.CamelHttpsinkSinkConnector"
+  config:
+    camel.kamelet.http-sink.url: https://simplekafkatest.requestcatcher.com/
+    key.converter: org.apache.kafka.connect.storage.StringConverter
+    name: kafka-http-demo-kafka-connector
+    topics: test1-postgres-instance.public.plant_events
+    value.converter: org.apache.kafka.connect.storage.StringConverter

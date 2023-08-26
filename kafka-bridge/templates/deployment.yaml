@@ -5,8 +5,8 @@ metadata:
   labels:
     {{- include "kafka-bridge.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.Replicas }}
-  bootstrapServers: {{ .Values.KafkaServers }}
-  http:
-    port: {{ .Values.Port }}
+  replicas: {{ .Values.replicaCount }}
+  bootstrapServers: {{ .Values.bootstrapServers }}
+    port: {{ .Values.port }}
+
 

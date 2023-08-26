@@ -2,6 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-Replicas: 1
-KafkaServers: kafka-kafka-instance-kafka-bootstrap:9092
-Port: 8080
+replicaCount: 1
+bootstrapServers: "kafka-kafka-instance-kafka-brokers:9092"
+port: 8080

@@ -48,6 +48,11 @@ spec:
         name: connect-cluster
       operations:
        - Read
+    - operations:
+        - Read
+      resource:
+        name: connect-kafka-http-demo-kafka-connector
+        type: group       
     - resource:
         type: topic
         name: {{ index $pval "topicName" | quote }}

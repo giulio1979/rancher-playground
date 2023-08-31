@@ -3,7 +3,7 @@
 kind: KafkaTopic
 apiVersion: kafka.strimzi.io/v1beta1
 metadata:
-  name: global-id-topic
+  name: test-schema-registry-global-id-topic
   labels:
     strimzi.io/cluster: {{ .Values.kafkaCluster }}
 spec:

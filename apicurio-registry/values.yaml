@@ -8,14 +8,19 @@ image:
   repository: apicurio/apicurio-registry-streams
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.3.2.Final"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-kafkaBootstrapServers: "kafka-kafka-instance-kafka-brokers:9092"
-kafkaCluster: "kafka-kafka-instance"
+DBName: "apicurio-registry"
+Username: "apicurio-registry"
+PasswordSecret: apicurio-registry-secret
+Size: "100M"
+Instances: 1
+DBVersion: 10
+
 
 serviceAccount:
   # Specifies whether a service account should be created

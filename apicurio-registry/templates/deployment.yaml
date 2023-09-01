@@ -33,9 +33,16 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          envFrom:
-          - configMapRef:
-              name: {{ include "apicurio-registry.fullname" . }}
+          env:
+            - name: REGISTRY_DATASOURCE_URL
+              value: 'jdbc:postgresql://{{ include "apicurio-registry.fullname" . }}/apicurio-registry'
+            - name: REGISTRY_DATASOURCE_USERNAME
+              value: apicurio-registry
+            - name: REGISTRY_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.PasswordSecret }}
+                  key: password
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

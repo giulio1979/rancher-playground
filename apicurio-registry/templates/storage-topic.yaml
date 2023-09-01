@@ -1,7 +1,7 @@
 kind: KafkaTopic
 apiVersion: kafka.strimzi.io/v1beta1
 metadata:
-  name: test-schema-registry-storage-topic
+  name: storage-topic
   labels:
     strimzi.io/cluster: {{ .Values.kafkaCluster }}
 spec:

@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "apicurio-registry.fullname" . }}
+  labels:
+    {{- include "apicurio-registry.labels" . | nindent 4 }}
+data:
+  REGISTRY_DATASOURCE_URL: 'jdbc:postgresql://postgres/apicurio-registry'
+  REGISTRY_DATASOURCE_USERNAME: apicurio-registry
+  REGISTRY_DATASOURCE_PASSWORD: password

@@ -1,0 +1,21 @@
+# Default values for kafka-connector.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+TaskCount: 1
+
+KafkaConnect: "test-connect-kafka-connect"
+
+connector:
+  name: "jdbc-connector"
+  config:
+    connector.class: "io.debezium.connector.jdbc.JdbcSinkConnector"
+    tasks.max: "1"
+    connection.url: "jdbc:postgresql://test1-postgres-instance/db"
+    connection.username: "postgres"
+    connection.password: "1MZgtVIMyM9ZyzyyXTk0NrTMQDV3NiI4yPhPaU2Xk9ZGhnZkf8nRnGVa4SRQNe81"
+    insert.mode: "upsert"
+    delete.enabled: "true"
+    primary.key.mode: "record_key"
+    schema.evolution: "basic"
+    database.time_zone: "UTC"

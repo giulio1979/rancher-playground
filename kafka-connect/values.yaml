@@ -16,4 +16,6 @@ plugins:
 - name: camel-sqlserver-source-kafka-connector
   type: tgz
   url: https://repo1.maven.org/maven2/org/apache/camel/kafkaconnector/camel-sqlserver-source-kafka-connector/3.20.6/camel-sqlserver-source-kafka-connector-3.20.6-package.tar.gz
-
+- name: debezium-connector-jdbc
+  type: tgz
+  url: https://repo1.maven.org/maven2/io/debezium/debezium-connector-jdbc/2.3.3.Final/debezium-connector-jdbc-2.3.3.Final-plugin.tar.gz

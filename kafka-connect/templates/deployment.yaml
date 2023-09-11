@@ -50,6 +50,43 @@ spec:
       type: docker
       image: ttl.sh/strimzi-connect-example-{{ include "kafka-connect.fullname" . }}:24h
     plugins:
+      - name: kafka-avro-serializer
+        artifacts:
+        - type: maven
+          repository: https://packages.confluent.io/maven/
+          group: io.confluent
+          artifact: kafka-connect-avro-converter
+          version: 7.5.0
+        - type: maven
+          repository: https://packages.confluent.io/maven/
+          group: io.confluent
+          artifact: kafka-connect-avro-data
+          version: 7.5.0
+        - type: maven
+          repository: https://packages.confluent.io/maven/
+          group: io.confluent
+          artifact: kafka-avro-serializer
+          version: 7.5.0
+        - type: maven
+          repository: https://packages.confluent.io/maven/
+          group: io.confluent
+          artifact: kafka-schema-serializer
+          version: 7.5.0
+        - type: maven
+          repository: https://packages.confluent.io/maven/
+          group: io.confluent
+          artifact: kafka-schema-registry-client
+          version: 7.5.0
+        - type: maven
+          repository: https://packages.confluent.io/maven/
+          group: io.confluent
+          artifact: common-config
+          version: 7.5.0
+        - type: maven
+          repository: https://packages.confluent.io/maven/
+          group: io.confluent
+          artifact: common-utils
+          version: 7.5.0
       {{- range $pkey, $pval := .Values.plugins }}
       - name: {{ index $pval "name" | quote }}
         artifacts:

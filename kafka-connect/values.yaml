@@ -16,3 +16,40 @@ plugins:
 - name: camel-sqlserver-source-kafka-connector
   type: tgz
   url: https://repo1.maven.org/maven2/org/apache/camel/kafkaconnector/camel-sqlserver-source-kafka-connector/3.20.6/camel-sqlserver-source-kafka-connector-3.20.6-package.tar.gz
+- name: kafka-avro-serializer
+  artifacts:
+  - type: maven
+    repository: https://packages.confluent.io/maven/
+    group: io.confluent
+    artifact: kafka-connect-avro-converter
+    version: 7.5.0
+  - type: maven
+    repository: https://packages.confluent.io/maven/
+    group: io.confluent
+    artifact: kafka-connect-avro-data
+    version: 7.5.0
+  - type: maven
+    repository: https://packages.confluent.io/maven/
+    group: io.confluent
+    artifact: kafka-avro-serializer
+    version: 7.5.0
+  - type: maven
+    repository: https://packages.confluent.io/maven/
+    group: io.confluent
+    artifact: kafka-schema-serializer
+    version: 7.5.0
+  - type: maven
+    repository: https://packages.confluent.io/maven/
+    group: io.confluent
+    artifact: kafka-schema-registry-client
+    version: 7.5.0
+  - type: maven
+    repository: https://packages.confluent.io/maven/
+    group: io.confluent
+    artifact: common-config
+    version: 7.5.0
+  - type: maven
+    repository: https://packages.confluent.io/maven/
+    group: io.confluent
+    artifact: common-utils
+    version: 7.5.0

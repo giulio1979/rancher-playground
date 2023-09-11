@@ -1,4 +1,5 @@
 KafkaUsername: "kafka-ui-user"
+KafkaPassword: "kafka-ui-user"
 KafkaCluster: "kafka-kafka-instance"
 BootstrapServers: kafka-kafka-instance-kafka-brokers:9092
 

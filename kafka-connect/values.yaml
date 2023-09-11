@@ -1,4 +1,4 @@
-BootstrapServers: "kafka-kafka-instance-kafka-brokers:9092"
+BootstrapServers: "kafka-kafka-instance-kafka-brokers:9093"
 ClientCertificateSecretName: "kafka-kafka-instance-cluster-ca-cert"
 KafkaUsername: "testuser"
 PasswordSecretName: "testuser"

@@ -1,0 +1,14 @@
+# Default values for apicurio-registry.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+KafkaUsername: "schema-registry-user"
+KafkaCluster: "kafka-kafka-instance"
+
+schema-registry:
+  kafka.enabled: false
+  externalKafka.brokers: SASL_PLAINTEXT://kafka-kafka-instance-kafka-brokers:9092
+  externalKafka.listener.protocol: SASL_PLAINTEXT
+  externalKafka.auth.protocol: sasl
+  externalKafka.auth.jaas.user: schema-registry-user
+  externalKafka.auth.jaas.existingSecret: schema-registry-user

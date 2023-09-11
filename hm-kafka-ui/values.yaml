@@ -1,0 +1,9 @@
+KafkaUsername: "kafka-ui-user"
+KafkaCluster: "kafka-kafka-instance"
+BootstrapServers: kafka-kafka-instance-kafka-brokers:9092
+
+kafka-ui:
+  yamlApplicationConfigConfigMap:
+    name: "kafka-ui-configmap"
+    keyName: "config.yml"
+

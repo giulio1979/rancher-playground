@@ -22,5 +22,7 @@ connector:
     include.schema.changes: 'true'
     key.converter: io.confluent.connect.avro.AvroConverter
     key.converter.schema.registry.url: http://schema-registry:8081
+    key.converter.schemas.enable: true
     value.converter: io.confluent.connect.avro.AvroConverter
     value.converter.schema.registry.url: http://schema-registry:8081
+    value.converter.schemas.enable: true

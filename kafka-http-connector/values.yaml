@@ -9,8 +9,18 @@ KafkaConnect: "test-connect-kafka-connect"
 connector:
   name: "org.apache.camel.kafkaconnector.httpsink.CamelHttpsinkSinkConnector"
   config:
+    camel.kamelet.http-sink.method: POST
     camel.kamelet.http-sink.url: https://simplekafkatest.requestcatcher.com/
-    key.converter: org.apache.kafka.connect.storage.StringConverter
+    errors.tolerance: all
+    key.converter: io.confluent.connect.avro.AvroConverter
+    key.converter.schema.registry.url: http://schema-registry:8081
+    key.converter.schemas.enable: true
     name: kafka-http-demo-kafka-connector
+    output.data.format: JSON
     topics: test1-postgres-instance.public.plant_events
-    value.converter: org.apache.kafka.connect.storage.StringConverter
+    transforms: tojson
+    transforms.tojson.converter.type: value
+    transforms.tojson.type: org.apache.camel.kafkaconnector.transforms.SchemaAndStructToJsonTransform
+    value.converter: io.confluent.connect.avro.AvroConverter
+    value.converter.schema.registry.url: http://schema-registry:8081
+    value.converter.schemas.enable: true

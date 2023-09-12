@@ -14,7 +14,7 @@ metadata:
     # set to true.
     strimzi.io/cluster: {{ .Values.KafkaConnect }}
 spec:
-  class: {{ .Values.connector.name }}
+  class: {{ .Values.config.connector.class }}
   tasksMax: {{ .Values.TaskCount }}
   config:
     {{- range $key, $value := .Values.connector.config }}

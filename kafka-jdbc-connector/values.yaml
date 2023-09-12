@@ -9,13 +9,18 @@ KafkaConnect: "test-connect-kafka-connect"
 connector:
   name: "jdbc-connector"
   config:
-    connector.class: "io.debezium.connector.jdbc.JdbcSinkConnector"
-    tasks.max: "1"
-    connection.url: "jdbc:postgresql://test1-postgres-instance/db"
-    connection.username: "postgres"
-    connection.password: "1MZgtVIMyM9ZyzyyXTk0NrTMQDV3NiI4yPhPaU2Xk9ZGhnZkf8nRnGVa4SRQNe81"
-    insert.mode: "upsert"
-    delete.enabled: "true"
-    primary.key.mode: "record_key"
-    schema.evolution: "basic"
-    database.time_zone: "UTC"
+    connection.password: DWxpo8Tt1Yt0zDy4ouazViieJCw9AT9KhQaVVBlUo4GRTUn8BvZ3wATUgxSlpmk6
+    connection.url: jdbc:postgresql://tgest2-postgres-instance/container
+    connection.username: hmuser
+    connector.class: io.debezium.connector.jdbc.JdbcSinkConnector
+    database.time_zone: UTC
+    delete.enabled: 'true'
+    insert.mode: upsert
+    key.converter: io.confluent.connect.avro.AvroConverter
+    key.converter.schema.registry.url: http://schema-registry:8081
+    primary.key.mode: record_key
+    schema.evolution: basic
+    tasks.max: '1'
+    topics.regex: .*plant.*
+    value.converter: io.confluent.connect.avro.AvroConverter
+    value.converter.schema.registry.url: http://schema-registry:8081

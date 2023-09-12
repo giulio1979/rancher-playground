@@ -51,6 +51,11 @@ spec:
     - operations:
         - Read
       resource:
+        name: connect-jdbc-sink-kafka-jdbc-sink-connector
+        type: group       
+    - operations:
+        - Read
+      resource:
         name: connect-kafka-http-demo-kafka-connector
         type: group       
     - resource:

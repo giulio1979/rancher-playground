@@ -1,7 +1,7 @@
-KafkaUsername: "kafka-ui-user"
-KafkaPassword: "kafka-ui-user"
-KafkaCluster: "kafka-kafka-instance"
-BootstrapServers: kafka-kafka-instance-kafka-brokers:9092
+KafkaUsername: "kafkauiuser"
+KafkaPassword: "kafkauiuser"
+KafkaCluster: "mesh-kafka-instance"
+BootstrapServers: mesh-kafka-instance-kafka-brokers:9092
 
 kafka-ui:
   yamlApplicationConfigConfigMap:

@@ -1,0 +1,42 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/publicEndpoints: '[{"addresses":["51.105.201.27"],"port":443,"protocol":"HTTPS","serviceName":"cattle-system:rancher","ingressName":"cattle-system:rancher","hostname":"rancher.marketplace.lab-danger-zone.online","path":"/","allNodes":false}]'
+    meta.helm.sh/release-name: rancher
+    meta.helm.sh/release-namespace: cattle-system
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "1800"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "1800"
+  creationTimestamp: "2023-09-22T09:09:17Z"
+  generation: 3
+  labels:
+    app: rancher
+    app.kubernetes.io/managed-by: Helm
+    chart: rancher-2.7.6
+    heritage: Helm
+    release: rancher
+  name: rancher
+  namespace: cattle-system
+  resourceVersion: "174253"
+  uid: e70284ef-afba-4022-afe2-7f3ffedddd93
+spec:
+  rules:
+  - host: rancher.marketplace.lab-danger-zone.online
+    http:
+      paths:
+      - backend:
+          service:
+            name: rancher
+            port:
+              number: 80
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - rancher.marketplace.lab-danger-zone.online
+    secretName: tls-rancher-ingress
+status:
+  loadBalancer:
+    ingress:
+    - ip: 51.105.201.27

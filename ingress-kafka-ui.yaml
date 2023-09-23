@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    field.cattle.io/publicEndpoints: '[{"addresses":["20.82.62.41"],"port":443,"protocol":"HTTPS","serviceName":"shared-services:kafka-ui","ingressName":"shared-services:kafka-ui","hostname":"kafka-ui.kafka-poc.lab-danger-zone.online","path":"/","allNodes":false}]'
+    nginx.ingress.kubernetes.io/auth-realm: Authentication Required - foo
+    nginx.ingress.kubernetes.io/auth-secret: basic-auth
+    nginx.ingress.kubernetes.io/auth-type: basic
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-production
+  creationTimestamp: "2023-09-22T18:37:01Z"
+  generation: 3
+  name: kafka-ui
+  namespace: shared-services
+  resourceVersion: "34672"
+  uid: 26f57a18-ae7c-4b77-a5f1-84ab588ea4a1
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: kafka-ui.kafka-poc.lab-danger-zone.online
+    http:
+      paths:
+      - backend:
+          service:
+            name: kafka-ui
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - kafka-ui.kafka-poc.lab-danger-zone.online
+    secretName: kafka-ui.kafka-poc.lab-danger-zone.online
+status:
+  loadBalancer:
+    ingress:
+    - ip: 20.82.62.41

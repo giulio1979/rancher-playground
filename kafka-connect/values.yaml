@@ -1,6 +1,7 @@
 BootstrapServers: "kafka-kafka-instance-kafka-brokers:9093"
 ClientCertificateSecretName: "kafka-kafka-instance-cluster-ca-cert"
 KafkaUsername: "testuser"
+Group: "sap"
 PasswordSecretName: "testuser"
 
 plugins:

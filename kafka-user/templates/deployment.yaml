@@ -10,16 +10,15 @@ spec:
   authorization:
     type: simple
     acls:
-    {{- range $pkey, $pval := .Values.access }}
     # Kafka Connects internal topics used to store configuration, offsets or status
     - resource:
         type: group
-        name: connect-cluster
+        name: {{ .Values.KafkaConnectGroup }}-connect-cluster
       operations:
         - Read
     - resource:
         type: topic
-        name: connect-cluster-configs
+        name: {{ .Values.KafkaConnectGroup }}-connect-cluster-configs
       operations:
         - Create
         - Describe
@@ -27,7 +26,7 @@ spec:
         - Write
     - resource:
         type: topic
-        name: connect-cluster-status
+        name: {{ .Values.KafkaConnectGroup }}-connect-cluster-status
       operations:
         - Create
         - Describe
@@ -35,37 +34,20 @@ spec:
         - Write
     - resource:
         type: topic
-        name: connect-cluster-offsets
+        name: {{ .Values.KafkaConnectGroup }}-connect-cluster-offsets
       operations:
         - Create
         - Describe
         - Read
         - Write
-    # Additional topics and groups used by connectors
-    # Change to match the topics used by your connectors
-    - resource:
-        type: group
-        name: connect-cluster
-      operations:
-       - Read
-    - operations:
-        - Read
-      resource:
-        name: connect-jdbc-sink-kafka-jdbc-sink-connector
-        type: group       
-    - operations:
-        - Read
-      resource:
-        name: connect-kafka-http-demo-kafka-connector
-        type: group       
     - resource:
         type: topic
-        name: {{ index $pval "topicName" | quote }}
+        name: {{ .Values.TopicsPrefix }}
         patternType: prefix
       operations:
         - Create
         - Describe
         - Read
         - Write  
-    {{- end }} 
+
 

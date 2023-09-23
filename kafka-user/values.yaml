@@ -1,5 +1,5 @@
 KafkaUser: "testuser"
-KafkaCluster: "kafka-kafka-instance"
-access:
-- topicName: plant
+KafkaCluster: "mesh-kafka-instance"
+KafkaConnectGroup: sap
+TopicsPrefix: source
 

@@ -49,5 +49,14 @@ spec:
         - Describe
         - Read
         - Write  
+    - resource:
+        type: group
+        name: {{ .Values.KafkaConnectorPrefix }}
+        patternType: prefix
+      operations:
+        - Create
+        - Describe
+        - Read
+        - Write          
 
 

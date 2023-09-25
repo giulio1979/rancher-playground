@@ -1,5 +1,6 @@
 KafkaUser: "testuser"
 KafkaCluster: "mesh-kafka-instance"
 KafkaConnectGroup: sap
+KafkaConnectorPrefix: connect
 TopicsPrefix: source
 

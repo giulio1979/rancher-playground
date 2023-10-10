@@ -10,7 +10,7 @@ spec:
       type: simple
     version: 3.5.1
     replicas: {{ .Values.kafka.numberOfInstances }}
-    resources:
+        resources:
       requests:
         memory: 100M
         cpu: 100m
@@ -20,6 +20,11 @@ spec:
     jvmOptions:
       -Xms: 256m
       -Xmx: 256m
+      -XX:
+        UseG1GC: true
+        MaxGCPauseMillis: 20
+        InitiatingHeapOccupancyPercent: 35
+        ExplicitGCInvokesConcurrent: true
     listeners:
       - name: plain
         port: 9092

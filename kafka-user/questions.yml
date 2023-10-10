@@ -1,0 +1,36 @@
+rancher_min_version: 2.5.0
+rancher_max_version: 5.7.0
+
+questions:
+
+- variable: KafkaUser
+  default: "testuser"
+  description: "The user to create"
+  type: string
+  label: Kafka Username
+
+- variable: KafkaCluster
+  default: "mesh-kafka-instance"
+  description: "In which kafka cluster to create the user"
+  type: string
+  label: Kafka Cluster
+  show_if: false
+
+- variable: KafkaConnectGroup
+  default: "testuser"
+  description: "A KafkaConnect group name prefix where this user has access"
+  type: string
+  label: KafkaConnect Group prefix name
+
+- variable: KafkaConnectorPrefix
+  default: "connect"
+  description: "A KafkaConnect connector prefix where this user has access"
+  type: string
+  label: KafkaConnect connector prefix name
+
+- variable: TopicsPrefix
+  default: "testuser"
+  description: "A Topic name prefix where this user has access"
+  type: string
+  label: Topics prefix name
+

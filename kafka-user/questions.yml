@@ -1,5 +1,5 @@
-rancher_min_version: 2.5.0
-rancher_max_version: 5.7.0
+rancher_min_version: 2.7.0
+rancher_max_version: 2.7.9
 
 questions:
 
@@ -8,6 +8,7 @@ questions:
   description: "The user to create"
   type: string
   label: Kafka Username
+  required: true
 
 - variable: KafkaCluster
   default: "mesh-kafka-instance"
@@ -21,16 +22,19 @@ questions:
   description: "A KafkaConnect group name prefix where this user has access"
   type: string
   label: KafkaConnect Group prefix name
+  required: true
 
 - variable: KafkaConnectorPrefix
   default: "connect"
   description: "A KafkaConnect connector prefix where this user has access"
   type: string
   label: KafkaConnect connector prefix name
+  required: true
 
 - variable: TopicsPrefix
   default: "testuser"
   description: "A Topic name prefix where this user has access"
   type: string
   label: Topics prefix name
+  required: true
 

@@ -6,35 +6,36 @@ questions:
 - variable: KafkaUser
   default: "testuser"
   description: "The user to create"
-  type: string
-  label: Kafka Username
+  type: "string"
+  label: "Kafka Username"
   required: true
 
 - variable: KafkaCluster
   default: "mesh-kafka-instance"
   description: "In which kafka cluster to create the user"
-  type: string
-  label: Kafka Cluster
+  type: "string"
+  label: "Kafka Cluster"
   show_if: false
 
 - variable: KafkaConnectGroup
   default: "testuser"
   description: "A KafkaConnect group name prefix where this user has access"
-  type: string
-  label: KafkaConnect Group prefix name
+  type: "string"
+  label: "KafkaConnect Group prefix name"
   required: true
 
 - variable: KafkaConnectorPrefix
   default: "connect"
   description: "A KafkaConnect connector prefix where this user has access"
-  type: string
-  label: KafkaConnect connector prefix name
+  type: "string"
+  label: "KafkaConnect connector prefix name"
   required: true
 
 - variable: TopicsPrefix
   default: "testuser"
   description: "A Topic name prefix where this user has access"
-  type: string
-  label: Topics prefix name
+  type: "string"
+  label: "Topics prefix name"
   required: true
+
 

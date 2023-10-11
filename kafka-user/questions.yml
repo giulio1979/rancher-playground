@@ -10,6 +10,7 @@ questions:
   type: "string"
   label: "Kafka Username"
   required: true
+  group: "User"
 
 - variable: KafkaCluster
   default: "mesh-kafka-instance"
@@ -17,6 +18,7 @@ questions:
   type: "string"
   label: "Kafka Cluster"
   show_if: false
+  group: "User"
 
 - variable: KafkaConnectGroup
   default: "testuser"
@@ -24,19 +26,19 @@ questions:
   type: "string"
   label: "KafkaConnect Group prefix name"
   required: true
-
+  group: "User"
 - variable: KafkaConnectorPrefix
   default: "connect"
   description: "A KafkaConnect connector prefix where this user has access"
   type: "string"
   label: "KafkaConnect connector prefix name"
   required: true
-
+  group: "User"
 - variable: TopicsPrefix
   default: "testuser"
   description: "A Topic name prefix where this user has access"
   type: "string"
   label: "Topics prefix name"
   required: true
-
+  group: "User"
 

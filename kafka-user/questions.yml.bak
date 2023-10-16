@@ -27,6 +27,7 @@ questions:
   label: "KafkaConnect Group prefix name"
   required: true
   group: "User"
+
 - variable: KafkaConnectorPrefix
   default: "connect"
   description: "A KafkaConnect connector prefix where this user has access"
@@ -34,6 +35,7 @@ questions:
   label: "KafkaConnect connector prefix name"
   required: true
   group: "User"
+
 - variable: TopicsPrefix
   default: "testuser"
   description: "A Topic name prefix where this user has access"
